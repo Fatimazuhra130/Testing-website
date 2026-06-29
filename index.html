@@ -1,0 +1,1869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Syed Tahir Allauddin Al-Qadri Al-Gillani</title>
+    <style>
+        /* ═══════════════════════════════════════════════ RESET & BASE ═══════════════════════════════════════════════ */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: #faf7f0;
+            color: #1a2a1e;
+            overflow-x: hidden;
+        }
+        button {
+            font-family: Georgia, serif;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+        img {
+            display: block;
+            max-width: 100%;
+        }
+        a {
+            text-decoration: none;
+        }
+
+        /* ═══════════════════════════════════════════════ TOPBAR ═══════════════════════════════════════════════ */
+        #topbar {
+            background: #052e18;
+            text-align: center;
+            padding: 8px 20px;
+            font-size: 12px;
+            color: #c9a84c;
+            letter-spacing: 3px;
+            font-weight: 700;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+        }
+
+        /* ═══════════════════════════════════════════════ NAVBAR ═══════════════════════════════════════════════ */
+        #navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 300;
+            background: #0a5c36;
+            border-bottom: 2.5px solid #c9a84c;
+            transition: all 0.3s;
+        }
+        #navbar.scrolled {
+            background: #073d24;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+        }
+        .nav-inner {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+        .brand-crest {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, #c9a84c, #f5e6c8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            box-shadow: 0 3px 12px rgba(201, 168, 76, 0.4);
+        }
+        .brand-text .ar {
+            font-size: 11px;
+            color: rgba(245, 230, 200, 0.7);
+            letter-spacing: 1.5px;
+            display: block;
+            line-height: 1.2;
+        }
+        .brand-text .en {
+            font-size: 15px;
+            font-weight: 900;
+            color: #f5e6c8;
+            display: block;
+            letter-spacing: 0.3px;
+            line-height: 1.3;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2px;
+            list-style: none;
+        }
+        .nav-links button {
+            padding: 7px 14px;
+            border-radius: 22px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #f5e6c8;
+            transition: all 0.2s;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+        }
+        .nav-links button.active {
+            background: #c9a84c;
+            color: #1a2a1e;
+        }
+        .nav-links button:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.12);
+        }
+        #hbg {
+            display: none;
+            color: #f5e6c8;
+            font-size: 27px;
+            padding: 4px;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+        #mob-menu {
+            display: none;
+            flex-direction: column;
+            background: #073d24;
+            border-top: 1px solid rgba(201, 168, 76, 0.2);
+            padding-bottom: 6px;
+        }
+        #mob-menu button {
+            padding: 13px 26px;
+            text-align: left;
+            color: #f5e6c8;
+            font-size: 14px;
+            font-weight: 700;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        #mob-menu button.active {
+            background: #c9a84c;
+            color: #1a2a1e;
+        }
+
+        /* ═══════════════════════════════════════════════ CONTENT WRAPPER ═══════════════════════════════════════════════ */
+        #content {
+            padding-top: 68px;
+            opacity: 1;
+            transition: opacity 0.18s;
+        }
+        #content.fade {
+            opacity: 0;
+        }
+        .wrap {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 70px 24px;
+        }
+        .wrap-sm {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 70px 24px;
+        }
+        .wrap-xs {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 70px 24px;
+        }
+
+        /* ═══════════════════════════════════════════════ SECTION HEADING ═══════════════════════════════════════════════ */
+        .sh {
+            text-align: center;
+            margin-bottom: 54px;
+        }
+        .sh .ey {
+            font-size: 11px;
+            letter-spacing: 5px;
+            color: #c9a84c;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .sh h2 {
+            font-size: clamp(22px, 4vw, 38px);
+            font-weight: 900;
+            color: #1a2a1e;
+            line-height: 1.2;
+        }
+        .sh.light h2 {
+            color: #ffffff;
+        }
+        .sh-rule {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 16px;
+        }
+        .sh-rule s {
+            display: block;
+            border-radius: 2px;
+            text-decoration: none;
+        }
+        .sh-rule s.long {
+            width: 44px;
+            height: 3px;
+            background: #0a5c36;
+        }
+        .sh-rule s.sq {
+            width: 8px;
+            height: 8px;
+            background: #c9a84c;
+            transform: rotate(45deg);
+        }
+        .sh-rule s.sqsm {
+            width: 5px;
+            height: 5px;
+            background: #0a5c36;
+            transform: rotate(45deg);
+        }
+
+        /* ═══════════════════════════════════════════════ GOLD DIVIDER ═══════════════════════════════════════════════ */
+        .div-gold {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 28px 0;
+        }
+        .div-gold .line-l {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #c9a84c);
+        }
+        .div-gold .line-r {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to left, transparent, #c9a84c);
+        }
+        .div-gold .dia {
+            width: 10px;
+            height: 10px;
+            background: #c9a84c;
+            transform: rotate(45deg);
+            flex-shrink: 0;
+        }
+        .div-gold .dia-sm {
+            width: 6px;
+            height: 6px;
+            background: #0d6e42;
+            transform: rotate(45deg);
+            flex-shrink: 0;
+        }
+
+        /* ═══════════════════════════════════════════════ BUTTONS ═══════════════════════════════════════════════ */
+        .btn-gold {
+            background: #c9a84c;
+            color: #1a2a1e;
+            padding: 14px 30px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 6px 22px rgba(201, 168, 76, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-block;
+        }
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(201, 168, 76, 0.5);
+        }
+        .btn-outline {
+            background: transparent;
+            color: #f5e6c8;
+            border: 1.5px solid rgba(201, 168, 76, 0.6);
+            padding: 14px 30px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+        .btn-outline:hover {
+            background: rgba(201, 168, 76, 0.1);
+            border-color: #c9a84c;
+        }
+
+        /* ═══════════════════════════════════════════════ HERO ═══════════════════════════════════════════════ */
+        #hero {
+            background: linear-gradient(150deg, #041f10 0%, #0a5c36 52%, #0d6e42 100%);
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .h-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            width: 100%;
+        }
+        .h-inner {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 100px 24px 140px;
+            display: flex;
+            align-items: center;
+            gap: 68px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+        .portrait-wrap {
+            position: relative;
+            flex-shrink: 0;
+        }
+        .portrait-frame {
+            width: 236px;
+            height: 236px;
+            border-radius: 50%;
+            padding: 6px;
+            background: linear-gradient(135deg, #c9a84c 0%, #f5e6c8 50%, #c9a84c 100%);
+            box-shadow: 0 0 0 14px rgba(201, 168, 76, 0.11), 0 28px 68px rgba(0, 0, 0, 0.5);
+        }
+        .portrait-frame img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center top;
+        }
+        .portrait-anim {
+            position: absolute;
+            inset: -18px;
+            border-radius: 50%;
+            border: 1px dashed rgba(201, 168, 76, 0.4);
+            animation: slowspin 30s linear infinite;
+        }
+        .portrait-badge {
+            position: absolute;
+            bottom: 6px;
+            right: -10px;
+            background: #c9a84c;
+            color: #1a2a1e;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            padding: 6px 14px;
+            border-radius: 22px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+            white-space: nowrap;
+        }
+        .h-text {
+            flex: 1;
+            min-width: 280px;
+        }
+        .h-eyebrow {
+            color: #c9a84c;
+            font-size: 11px;
+            letter-spacing: 5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+        .h-name {
+            color: #fff;
+            font-size: clamp(26px, 5vw, 50px);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 24px rgba(0, 0, 0, 0.3);
+        }
+        .h-name .gld {
+            color: #f5e6c8;
+        }
+        .h-title {
+            color: rgba(245, 230, 200, 0.75);
+            font-size: 15px;
+            font-style: italic;
+            margin-bottom: 28px;
+            line-height: 1.65;
+        }
+        .h-pills {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+        .h-pill {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(201, 168, 76, 0.35);
+            border-radius: 30px;
+            padding: 9px 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #f5e6c8;
+            font-size: 13px;
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+        }
+        .h-btns {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        /* ═══════════════════════════════════════════════ NAV GRID ═══════════════════════════════════════════════ */
+        .ng {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
+            gap: 16px;
+        }
+        .ng-tile {
+            background: linear-gradient(150deg, #0a5c36, #073d24);
+            border: 1px solid rgba(201, 168, 76, 0.25);
+            border-radius: 18px;
+            padding: 30px 16px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.22s, box-shadow 0.22s;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.22);
+        }
+        .ng-tile:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 38px rgba(0, 0, 0, 0.32);
+        }
+        .ng-tile.alt {
+            background: linear-gradient(150deg, #073d24, #041f10);
+        }
+        .ng-bar {
+            position: absolute;
+            top: 0;
+            left: 16%;
+            right: 16%;
+            height: 3px;
+            background: #c9a84c;
+            border-radius: 0 0 5px 5px;
+        }
+        .ng-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+        .ng-label {
+            color: #f5e6c8;
+            font-weight: 800;
+            font-size: 14px;
+            letter-spacing: 0.4px;
+        }
+
+        /* ═══════════════════════════════════════════════ ABOUT STRIP ═══════════════════════════════════════════════ */
+        .about-strip {
+            background: #f4f0e8;
+            border-top: 1px solid #e0d6c0;
+            border-bottom: 1px solid #e0d6c0;
+            padding: 68px 24px;
+        }
+        .about-inner {
+            max-width: 840px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .about-inner .main-p {
+            font-size: 17px;
+            line-height: 2;
+            color: #3a4a3e;
+        }
+        .about-inner .sub-p {
+            font-size: 15px;
+            line-height: 1.82;
+            color: #6a7a6e;
+            font-style: italic;
+        }
+
+        /* ═══════════════════════════════════════════════ SONS GRID ═══════════════════════════════════════════════ */
+        .sons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
+            gap: 28px;
+        }
+        .son-card {
+            background: #fff;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.09);
+            border: 1px solid #e0d6c0;
+            transition: transform 0.22s;
+        }
+        .son-card:hover {
+            transform: translateY(-5px);
+        }
+        .son-hdr {
+            background: linear-gradient(145deg, #0a5c36, #073d24);
+            padding: 40px 24px 28px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .son-pat {
+            position: absolute;
+            right: 8px;
+            top: 8px;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+        .son-av-ring {
+            display: inline-block;
+            padding: 5px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #c9a84c, #f5e6c8, #c9a84c);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.38);
+            position: relative;
+            z-index: 1;
+        }
+        .son-av-ring img {
+            width: 108px;
+            height: 108px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+        .son-gold-bar {
+            height: 4px;
+            background: linear-gradient(to right, #c9a84c, #e6f0ea, #c9a84c);
+        }
+        .son-body {
+            padding: 22px 26px 30px;
+        }
+        .son-roman {
+            font-size: 10px;
+            font-weight: 800;
+            color: #c9a84c;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        .son-body h3 {
+            font-size: 17px;
+            font-weight: 900;
+            color: #1a2a1e;
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+        .son-born {
+            font-size: 12px;
+            color: #6a7a6e;
+            margin-bottom: 14px;
+        }
+        .son-rule {
+            width: 36px;
+            height: 2px;
+            background: #c9a84c;
+            border-radius: 2px;
+            margin-bottom: 13px;
+        }
+        .son-body p {
+            font-size: 14px;
+            line-height: 1.82;
+            color: #3a4a3e;
+        }
+
+        /* ═══════════════════════════════════════════════ BOOKS BANNER STRIP ═══════════════════════════════════════════════ */
+        .books-strip {
+            background: linear-gradient(145deg, #073d24, #0a5c36);
+            padding: 64px 24px;
+        }
+        .books-strip-inner {
+            max-width: 1160px;
+            margin: 0 auto;
+        }
+        .book-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .book-tag {
+            background: rgba(255, 255, 255, 0.09);
+            border: 1px solid rgba(201, 168, 76, 0.45);
+            color: #f5e6c8;
+            padding: 9px 20px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .book-tag:hover {
+            background: rgba(201, 168, 76, 0.14);
+        }
+
+        /* ═══════════════════════════════════════════════ TEACHINGS ═══════════════════════════════════════════════ */
+        .t-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .t-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 22px rgba(0, 0, 0, 0.07);
+            border: 1px solid #e0d6c0;
+            overflow: hidden;
+            display: flex;
+        }
+        .t-accent {
+            width: 5px;
+            flex-shrink: 0;
+            background: linear-gradient(to bottom, #c9a84c, #0a5c36);
+        }
+        .t-inner {
+            padding: 24px 28px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            flex: 1;
+        }
+        .t-icon {
+            font-size: 26px;
+            width: 54px;
+            height: 54px;
+            min-width: 54px;
+            border-radius: 50%;
+            background: #e6f0ea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .t-body h3 {
+            font-size: 16px;
+            font-weight: 800;
+            color: #1a2a1e;
+            margin-bottom: 10px;
+        }
+        .t-body blockquote {
+            font-size: 14px;
+            line-height: 1.88;
+            color: #3a4a3e;
+            font-style: italic;
+            border-left: 3px solid #c9a84c;
+            padding-left: 16px;
+            margin: 0;
+        }
+
+        /* ═══════════════════════════════════════════════ BOOKS ═══════════════════════════════════════════════ */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 18px;
+        }
+        .b-card {
+            background: #fff;
+            border-radius: 14px;
+            border: 1px solid #e0d6c0;
+            padding: 20px 22px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            box-shadow: 0 3px 14px rgba(0, 0, 0, 0.06);
+        }
+        .b-card.grn {
+            border-left: 5px solid #0a5c36;
+        }
+        .b-card.gld {
+            border-left: 5px solid #c9a84c;
+        }
+        .b-ico {
+            font-size: 22px;
+            width: 46px;
+            height: 46px;
+            min-width: 46px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .b-ico.grn {
+            background: #e6f0ea;
+        }
+        .b-ico.gld {
+            background: #fdf8ec;
+        }
+        .b-vol {
+            font-size: 10px;
+            color: #6a7a6e;
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .b-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: #1a2a1e;
+            line-height: 1.42;
+        }
+
+        /* ═══════════════════════════════════════════════ EVENTS TIMELINE ═══════════════════════════════════════════════ */
+        .timeline {
+            position: relative;
+            padding-left: 44px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 14px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: linear-gradient(to bottom, #c9a84c, #0a5c36);
+        }
+        .tl-item {
+            position: relative;
+            margin-bottom: 28px;
+        }
+        .tl-dot {
+            position: absolute;
+            left: -37px;
+            top: 20px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 3px solid #faf7f0;
+        }
+        .tl-dot.gd {
+            background: #c9a84c;
+            box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.3);
+        }
+        .tl-dot.gn {
+            background: #0a5c36;
+            box-shadow: 0 0 0 3px rgba(10, 92, 54, 0.28);
+        }
+        .tl-card {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+            border: 1px solid #e0d6c0;
+            padding: 20px 24px;
+        }
+        .tl-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .tl-top h3 {
+            font-size: 15px;
+            font-weight: 800;
+            color: #1a2a1e;
+            flex: 1;
+            line-height: 1.4;
+        }
+        .tl-yr {
+            background: #e6f0ea;
+            color: #0a5c36;
+            font-size: 12px;
+            font-weight: 800;
+            padding: 4px 14px;
+            border-radius: 20px;
+            border: 1px solid #b8d4bf;
+            flex-shrink: 0;
+        }
+        .tl-loc {
+            font-size: 13px;
+            color: #6a7a6e;
+            margin-top: 9px;
+        }
+
+        /* ═══════════════════════════════════════════════ BIOGRAPHY ═══════════════════════════════════════════════ */
+        .bio-box {
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid #e0d6c0;
+        }
+        .bio-hdr {
+            background: linear-gradient(145deg, #073d24, #0a5c36);
+            padding: 52px 40px 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .bio-pat {
+            position: absolute;
+            right: 16px;
+            top: 16px;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+        .bio-av {
+            display: inline-block;
+            padding: 6px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #c9a84c, #f5e6c8, #c9a84c);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.38);
+            position: relative;
+            z-index: 1;
+        }
+        .bio-av img {
+            width: 148px;
+            height: 148px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+        .bio-hdr h2 {
+            color: #fff;
+            font-size: 22px;
+            font-weight: 900;
+            margin-top: 20px;
+            line-height: 1.3;
+        }
+        .bio-hdr p {
+            color: #f5e6c8;
+            font-style: italic;
+            font-size: 14px;
+            margin-top: 6px;
+        }
+        .bio-body {
+            padding: 44px 48px;
+        }
+        .bio-facts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            background: #fdf8ec;
+            border: 1px solid rgba(201, 168, 76, 0.38);
+            border-radius: 16px;
+            padding: 26px 30px;
+            margin-bottom: 34px;
+        }
+        .fact-lbl {
+            font-size: 10px;
+            font-weight: 800;
+            color: #c9a84c;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        .fact-val {
+            font-size: 13px;
+            color: #1a2a1e;
+            line-height: 1.6;
+        }
+        .bio-sec-lbl {
+            font-size: 10px;
+            font-weight: 800;
+            color: #c9a84c;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .bio-sec-txt {
+            font-size: 15px;
+            line-height: 1.9;
+            color: #3a4a3e;
+        }
+
+        /* ═══════════════════════════════════════════════ FOOTER — ENHANCED ═══════════════════════════════════════════════ */
+        footer {
+            background: #041f10;
+            border-top: 3px solid #c9a84c;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 160px;
+            background: radial-gradient(ellipse, rgba(201, 168, 76, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+            border-radius: 50%;
+        }
+
+        .footer-top {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 60px 24px 44px;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1.2fr;
+            gap: 48px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .fb-crest {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #c9a84c, #f5e6c8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 14px rgba(201, 168, 76, 0.35);
+            transition: transform 0.3s;
+        }
+        .fb-crest:hover {
+            transform: scale(1.05) rotate(-4deg);
+        }
+
+        .fb-brand h3 {
+            color: #f5e6c8;
+            font-size: 18px;
+            font-weight: 900;
+            margin-bottom: 4px;
+            letter-spacing: 0.3px;
+        }
+        .fb-brand .fb-ar {
+            color: #c9a84c;
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-bottom: 14px;
+            display: block;
+            font-weight: 600;
+        }
+        .fb-brand .fb-desc {
+            color: rgba(245, 230, 200, 0.58);
+            font-size: 13px;
+            line-height: 1.8;
+        }
+        .fb-brand .fb-desc strong {
+            color: rgba(245, 230, 200, 0.85);
+            font-weight: 700;
+        }
+
+        .fc-head {
+            color: #c9a84c;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.22);
+            position: relative;
+        }
+        .fc-head::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 32px;
+            height: 2px;
+            background: #c9a84c;
+            border-radius: 2px;
+        }
+
+        .fc-links {
+            list-style: none;
+        }
+        .fc-links li {
+            margin-bottom: 10px;
+        }
+        .fc-links li button {
+            color: rgba(245, 230, 200, 0.62);
+            font-size: 13px;
+            font-weight: 600;
+            transition: color 0.2s, transform 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .fc-links li button::before {
+            content: '◈';
+            font-size: 8px;
+            color: #c9a84c;
+            opacity: 0.4;
+            transition: opacity 0.2s;
+        }
+        .fc-links li button:hover {
+            color: #c9a84c;
+            transform: translateX(4px);
+        }
+        .fc-links li button:hover::before {
+            opacity: 1;
+        }
+
+        .fc-text {
+            color: rgba(245, 230, 200, 0.58);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+        .fc-text .hl {
+            color: rgba(245, 230, 200, 0.8);
+            font-weight: 700;
+        }
+        .fc-quote {
+            color: #c9a84c;
+            font-size: 13px;
+            font-style: italic;
+            margin-top: 18px;
+            line-height: 1.7;
+            padding: 14px 18px;
+            background: rgba(201, 168, 76, 0.06);
+            border-radius: 12px;
+            border-left: 3px solid rgba(201, 168, 76, 0.3);
+            position: relative;
+        }
+        .fc-quote::before {
+            content: '"';
+            font-size: 28px;
+            color: rgba(201, 168, 76, 0.25);
+            position: absolute;
+            top: 4px;
+            left: 8px;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        .fc-quote span {
+            display: block;
+            padding-left: 20px;
+        }
+
+        .fc-social {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        .fc-social a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(201, 168, 76, 0.12);
+            border: 1px solid rgba(201, 168, 76, 0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: rgba(245, 230, 200, 0.6);
+            transition: all 0.25s;
+        }
+        .fc-social a:hover {
+            background: #c9a84c;
+            border-color: #c9a84c;
+            color: #1a2a1e;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(201, 168, 76, 0.3);
+        }
+
+        .footer-mid {
+            border-top: 1px solid rgba(201, 168, 76, 0.14);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.14);
+            padding: 22px 24px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+        .footer-mid p {
+            color: #c9a84c;
+            font-size: 13px;
+            font-style: italic;
+            letter-spacing: 0.5px;
+            max-width: 720px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .footer-mid .dua-icon-sm {
+            font-size: 18px;
+            opacity: 0.8;
+        }
+        .footer-mid .dua-amp {
+            color: rgba(201, 168, 76, 0.4);
+            font-weight: 300;
+        }
+
+        .footer-bot {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 20px 24px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            position: relative;
+            z-index: 1;
+        }
+        .cr-left {
+            color: rgba(245, 230, 200, 0.42);
+            font-size: 12px;
+            line-height: 1.7;
+        }
+        .cr-left strong {
+            color: rgba(245, 230, 200, 0.72);
+            font-weight: 700;
+        }
+        .cr-left .cr-divider {
+            color: rgba(201, 168, 76, 0.25);
+            margin: 0 6px;
+        }
+        .cr-right {
+            color: #c9a84c;
+            font-size: 12px;
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .cr-right .heart {
+            color: #c0392b;
+            font-size: 14px;
+            display: inline-block;
+            animation: pulseHeart 1.8s ease-in-out infinite;
+        }
+        @keyframes pulseHeart {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        /* ═══════════════════════════════════════════════ DUA MODAL ═══════════════════════════════════════════════ */
+        #dua-bg {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.68);
+            z-index: 600;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            backdrop-filter: blur(6px);
+        }
+        #dua-bg.show {
+            display: flex;
+        }
+        .dua-box {
+            background: #fff;
+            border-radius: 24px;
+            max-width: 400px;
+            width: 100%;
+            padding: 42px 38px;
+            border: 2px solid #c9a84c;
+            box-shadow: 0 26px 80px rgba(0, 0, 0, 0.38);
+            text-align: center;
+            animation: popIn 0.25s ease;
+        }
+        .dua-icon {
+            font-size: 46px;
+            margin-bottom: 16px;
+        }
+        .dua-box h2 {
+            font-size: 27px;
+            font-weight: 900;
+            color: #1a2a1e;
+            margin-bottom: 18px;
+        }
+        .dua-box p {
+            font-size: 15px;
+            line-height: 1.9;
+            color: #3a4a3e;
+            margin-bottom: 26px;
+        }
+        .dua-close {
+            background: #0a5c36;
+            color: #fff;
+            padding: 14px 0;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 15px;
+            width: 100%;
+            transition: background 0.2s;
+        }
+        .dua-close:hover {
+            background: #073d24;
+        }
+
+        /* ═══════════════════════════════════════════════ ANIMATIONS ═══════════════════════════════════════════════ */
+        @keyframes slowspin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes popIn {
+            from {
+                transform: scale(0.88);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* ═══════════════════════════════════════════════ RESPONSIVE ═══════════════════════════════════════════════ */
+        @media(max-width:768px) {
+            .nav-links {
+                display: none;
+            }
+            #hbg {
+                display: block;
+            }
+            .h-inner {
+                gap: 36px;
+                padding: 80px 20px 120px;
+            }
+            .portrait-frame {
+                width: 172px;
+                height: 172px;
+            }
+            .portrait-anim {
+                inset: -14px;
+            }
+            .bio-facts {
+                grid-template-columns: 1fr;
+            }
+            .bio-body {
+                padding: 28px 22px;
+            }
+            .bio-hdr {
+                padding: 38px 20px 54px;
+            }
+            .t-inner {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 36px;
+                padding: 44px 20px 32px;
+            }
+            .footer-bot {
+                flex-direction: column;
+                text-align: center;
+            }
+            .fc-head::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .fc-links li button {
+                justify-content: center;
+            }
+            .footer-mid p {
+                font-size: 12px;
+                flex-direction: column;
+                gap: 4px;
+            }
+            .cr-right {
+                justify-content: center;
+            }
+            .fc-social {
+                justify-content: center;
+            }
+            .fc-quote {
+                text-align: center;
+            }
+            .fc-quote span {
+                padding-left: 0;
+            }
+            .fc-quote::before {
+                display: none;
+            }
+        }
+
+        @media(max-width:420px) {
+            .h-name {
+                font-size: 24px;
+            }
+            .portrait-frame {
+                width: 148px;
+                height: 148px;
+            }
+            .portrait-badge {
+                font-size: 10px;
+                padding: 5px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ══ TOP ANNOUNCEMENT BAR ══════════════════════ -->
+    <div id="topbar">☪&nbsp;&nbsp;السلسلة القادرية&nbsp;&nbsp;·&nbsp;&nbsp;Al-Qadiriyya Spiritual Order&nbsp;&nbsp;☪</div>
+
+    <!-- ══ NAVBAR ════════════════════════════════════ -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <div class="nav-brand" onclick="go('home')">
+                <div class="brand-crest">☪</div>
+                <div class="brand-text">
+                    <span class="ar">Al-Gillani Legacy</span>
+                    <span class="en">Syed Tahir Allauddin</span>
+                </div>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><button onclick="go('home')">Home</button></li>
+                <li><button onclick="go('biography')">Biography</button></li>
+                <li><button onclick="go('sons')">Sons</button></li>
+                <li><button onclick="go('teachings')">Teachings</button></li>
+                <li><button onclick="go('books')">Books</button></li>
+                <li><button onclick="go('events')">Events</button></li>
+                <li><button onclick="openDua()">Dua&nbsp;🤲</button></li>
+            </ul>
+            <button id="hbg" onclick="toggleMenu()">☰</button>
+        </div>
+        <div id="mob-menu">
+            <button onclick="go('home')">Home</button>
+            <button onclick="go('biography')">Biography</button>
+            <button onclick="go('sons')">Sons</button>
+            <button onclick="go('teachings')">Teachings</button>
+            <button onclick="go('books')">Books</button>
+            <button onclick="go('events')">Events</button>
+            <button onclick="openDua()">Dua 🤲</button>
+        </div>
+    </nav>
+
+    <!-- ══ PAGE CONTENT ══════════════════════════════ -->
+    <div id="content"></div>
+
+    <!-- ══ FOOTER — ENHANCED ══════════════════════════ -->
+    <footer>
+        <div class="footer-top">
+            <!-- Brand -->
+            <div class="fb-brand">
+                <div class="fb-crest">☪</div>
+                <h3>Al-Qadri Al-Gillani</h3>
+                <span class="fb-ar">السلسلة القادرية</span>
+                <p class="fb-desc">
+                    A tribute to the life, teachings and enduring spiritual legacy of
+                    <strong>Syed Tahir Allauddin Al-Qadri Al-Gillani</strong> —
+                    a beacon of Sufism and Islamic reform in the 20th century.
+                    <br /><br />
+                    <span style="color:rgba(245,230,200,0.45);font-size:12px;">
+                        ☪ Silsilah e Qadiriyya · Since 1956
+                    </span>
+                </p>
+                <div class="fc-social">
+                    <a href="#" title="Spiritual Community" aria-label="Community">🕌</a>
+                    <a href="#" title="Sacred Teachings" aria-label="Teachings">📿</a>
+                    <a href="#" title="Blessings" aria-label="Blessings">☪</a>
+                    <a href="#" title="Peace" aria-label="Peace">🕊️</a>
+                </div>
+            </div>
+
+            <!-- Quick links -->
+            <div>
+                <p class="fc-head">Quick Links</p>
+                <ul class="fc-links">
+                    <li><button onclick="go('home')">Home</button></li>
+                    <li><button onclick="go('biography')">Biography</button></li>
+                    <li><button onclick="go('sons')">His Sons</button></li>
+                    <li><button onclick="go('teachings')">Teachings</button></li>
+                    <li><button onclick="go('books')">Written Works</button></li>
+                    <li><button onclick="go('events')">Notable Events</button></li>
+                    <li><button onclick="openDua()">Dua 🤲</button></li>
+                </ul>
+            </div>
+
+            <!-- Info -->
+            <div>
+                <p class="fc-head">Spiritual Order</p>
+                <p class="fc-text">
+                    <span class="hl">Silsilah e Qadiriyya</span><br />
+                    📍 Founded: <span class="hl">Baghdad, Iraq</span><br />
+                    📍 Established in Pakistan: <span class="hl">1956</span><br />
+                    📍 Headquarters: <span class="hl">Quetta, Pakistan</span><br />
+                    📍 Resting Place: <span class="hl">Lahore, Pakistan</span>
+                </p>
+                <div class="fc-quote">
+                    <span>
+                        "Walk the path of the righteous,<br />
+                        and Allah will illuminate your way."
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dua strip -->
+        <div class="footer-mid">
+            <p>
+                <span class="dua-icon-sm">🤲</span>
+                May Allah bless the soul of Syed Tahir Allauddin Al-Qadri Al-Gillani
+                and elevate his station in Jannah.
+                <span class="dua-amp">&nbsp;·&nbsp;</span>
+                <span style="font-weight:700;color:#f5e6c8;">Ameen.</span>
+            </p>
+        </div>
+
+        <!-- Copyright -->
+        <div class="footer-bot">
+            <div class="cr-left">
+                &copy; <strong>2025 Syed Tahir Allauddin Al-Qadri Al-Gillani Legacy Foundation.</strong>
+                <span class="cr-divider">|</span>
+                All Rights Reserved.
+                <span class="cr-divider">|</span>
+                No content may be reproduced without written permission.
+            </div>
+            <div class="cr-right">
+                Designed with <span class="heart">❤</span> in honour of a great Wali of Allah
+            </div>
+        </div>
+    </footer>
+
+    <!-- ══ DUA MODAL ══════════════════════════════════ -->
+    <div id="dua-bg" onclick="closeDua()">
+        <div class="dua-box" onclick="event.stopPropagation()">
+            <div class="dua-icon">🤲</div>
+            <h2>Dua</h2>
+            <div class="div-gold">
+                <div class="line-l"></div>
+                <div class="dia"></div>
+                <div class="dia-sm"></div>
+                <div class="dia"></div>
+                <div class="line-r"></div>
+            </div>
+            <p>
+                May Allah bless the legacy of
+                <strong>Syed Tahir Allauddin Al-Qadri Al-Gillani</strong>,
+                elevate his station in Jannah, and allow his teachings to guide
+                hearts until the Day of Judgement. <strong>Ameen.</strong>
+            </p>
+            <button class="dua-close" onclick="closeDua()">Ameen &nbsp;🤲</button>
+        </div>
+    </div>
+
+    <!-- ══ JAVASCRIPT ══════════════════════════════════ -->
+    <script>
+        /* ── Image URLs ─────────────────────────────────────────────── */
+        const IMG = {
+            main: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxJBb0cijwKNkX-94YTf68hSm02-KqhCEwI1zWi9rtN2cL6uIffR1pH-0&s=10',
+            son1: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnK47emaaqQvl-O6xfjg0aeh83i_ibtgzaXibu1WVTbVfrs5aB5Xn13dAg&s=10',
+            son2: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJcUPXF9G5GYBVMs9tDBiGGbaOhs4OqD76WrDdBdss6UeS4l_50VUnb-0&s=10',
+            son3: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9mvo1E4j-oOjfM18WctQsKuftK96yNdgEMQ&s',
+        };
+
+        const FB = {
+            main: 'https://ui-avatars.com/api/?name=Syed+Tahir&size=300&background=073d24&color=c9a84c&bold=true&rounded=true',
+            son1: 'https://ui-avatars.com/api/?name=Syed+Mahmood&size=200&background=0a5c36&color=c9a84c&bold=true&rounded=true',
+            son2: 'https://ui-avatars.com/api/?name=Abdul+Qadir&size=200&background=073d24&color=f5e6c8&bold=true&rounded=true',
+            son3: 'https://ui-avatars.com/api/?name=Muhammad+Zia&size=200&background=c9a84c&color=073d24&bold=true&rounded=true',
+        };
+
+        function imgTag(src, fb, alt, cls = '') {
+            return `<img src="${src}" alt="${alt}" class="${cls}" loading="lazy" onerror="this.onerror=null;this.src='${fb}'" />`;
+        }
+
+        /* ── Data ───────────────────────────────────────────────────── */
+        const DATA = {
+            sons: [{
+                roman: 'Son I',
+                name: 'Syed Mahmood Mohiyuddin',
+                born: '14 July 1968',
+                img: IMG.son1,
+                fb: FB.son1,
+                desc: 'Eldest son. Devoted to spiritual training and welfare of followers. Thousands visit his shrine annually on Laylatul Qadar.'
+            }, {
+                roman: 'Son II',
+                name: 'Syed Abdul Qadir Jamaluddin',
+                born: '4 June 1969',
+                img: IMG.son2,
+                fb: FB.son2,
+                desc: 'Middle son. M.A in English & MSc in Foreign Relations. Former MNA Pakistan. Travels worldwide propagating Tariqa Qadiria.'
+            }, {
+                roman: 'Son III',
+                name: 'Syed Muhammad Ziauddin',
+                born: '28 May 1976',
+                img: IMG.son3,
+                fb: FB.son3,
+                desc: 'Youngest son. M.A in Pakistani Studies & LLB. Spends most time in Khalwa (Spiritual Seclusion) at Quetta, tours overseas for propagation.'
+            }, ],
+            teachings: [{
+                icon: '☪️',
+                title: 'Strict Adherence to Shariah',
+                q: 'Al-Gillani was very strict in adherence to the laws of Shariah and Tariqah, and until he died he worked tirelessly at propagating the teachings of his ancestor Abdul Qadir Gilani.'
+            }, {
+                icon: '🕌',
+                title: 'Islamic Unity',
+                q: 'He encouraged Islamic Unity and would often speak out against acts considered bad innovations and rituals that had crept inside Tassawuf.'
+            }, {
+                icon: '🌙',
+                title: 'Spiritual Retreat (Khalwah)',
+                q: 'Following in the footsteps of his ancestor, Al-Gillani spent the majority of his life in spiritual retreat (khalwah) and undertaking spiritual exercises (mujāhidah).'
+            }, {
+                icon: '🤲',
+                title: 'Service to Humanity',
+                q: "During Al-Gillani's visit of Ceylon in 1958, he established a care-home for needy and orphaned children."
+            }, {
+                icon: '📿',
+                title: 'Respect for Scholars',
+                q: "When Al-Gillani visited Bareilly, Mufti Mustafa Raza Khan remained barefoot for the duration of his stay and stood to serve him, showing immense respect."
+            }, ],
+            books: [
+                'Mahboob Subhani',
+                'Tuhfa Al-Tahiria Aowrad Al-Qadria',
+                'Ghous Al Azam (English)',
+                'Shajrah',
+                'Ziaraat Muqamaat Muqadassa',
+                'Tazkarah-e-Qadriah (Urdu & Pushto)',
+                'Wazaif-e-Qadriah (Urdu)',
+                'Nimaz Book (Urdu)'
+            ],
+            events: [{
+                title: 'International Khatm e Nabuwat Conference',
+                loc: 'Minar e Pakistan',
+                yr: '1980s'
+            }, {
+                title: 'Inauguration of Minhaj-ul-Quran International',
+                loc: 'Lahore, Pakistan',
+                yr: '1984'
+            }, {
+                title: 'International Minhaj-ul-Quran Conference',
+                loc: 'Lahore, Pakistan',
+                yr: '1987'
+            }, {
+                title: 'Al-Hejaz Conference',
+                loc: 'London, United Kingdom',
+                yr: '1980s'
+            }, {
+                title: 'International Minhaj ul Quran Conference',
+                loc: 'Wembley Arena, London',
+                yr: '1988'
+            }, ],
+        };
+
+        /* ── Helpers ────────────────────────────────────────────────── */
+        const sh = (title, sub, light = false) => `
+                <div class="sh${light ? ' light' : ''}">
+                    <p class="ey">${sub}</p>
+                    <h2>${title}</h2>
+                    <div class="sh-rule">
+                        <s class="long"></s><s class="sq"></s><s class="sqsm"></s><s class="sq"></s><s class="long"></s>
+                    </div>
+                </div>`;
+
+        const divGold = () => `
+                <div class="div-gold">
+                    <div class="line-l"></div>
+                    <div class="dia"></div><div class="dia-sm"></div><div class="dia"></div>
+                    <div class="line-r"></div>
+                </div>`;
+
+        const patSVG = () => `
+                <svg class="son-pat" width="108" height="108" viewBox="0 0 120 120">
+                    <g stroke="#c9a84c" stroke-width="1" fill="none">
+                        <circle cx="60" cy="60" r="52"/><circle cx="60" cy="60" r="36"/><circle cx="60" cy="60" r="20"/>
+                        <line x1="60" y1="40" x2="60" y2="8"/><line x1="60" y1="80" x2="60" y2="112"/>
+                        <line x1="40" y1="60" x2="8" y2="60"/><line x1="80" y1="60" x2="112" y2="60"/>
+                        <line x1="46" y1="46" x2="14" y2="14"/><line x1="74" y1="74" x2="106" y2="106"/>
+                        <line x1="74" y1="46" x2="106" y2="14"/><line x1="46" y1="74" x2="14" y2="106"/>
+                        <polygon points="60,8 112,86 8,86"/><polygon points="60,112 8,34 112,34"/>
+                    </g>
+                </svg>`;
+
+        /* ── Page renderers ─────────────────────────────────────────── */
+        const PAGES = {
+            home() {
+                const pts = Array.from({ length: 24 }, (_, i) =>
+                    `<span style="width:${2 + (i % 4) * 2}px;height:${2 + (i % 4) * 2}px;opacity:${0.05 + (i % 5) * 0.04};left:${(i * 43) % 100}%;top:${(i * 59) % 100}%;position:absolute;border-radius:50%;background:#c9a84c;pointer-events:none"></span>`
+                ).join('');
+
+                const tiles = [
+                    { s: 'biography', ico: '📖', label: 'Biography' },
+                    { s: 'sons', ico: '👨‍👨‍👦', label: 'His Sons' },
+                    { s: 'teachings', ico: '💎', label: 'Teachings' },
+                    { s: 'books', ico: '📚', label: 'Books' },
+                    { s: 'events', ico: '🕌', label: 'Events' },
+                    { s: 'dua', ico: '🤲', label: 'Dua' },
+                ].map((t, i) =>
+                    `<button class="ng-tile${i % 2 ? ' alt' : ''}" onclick="${t.s === 'dua' ? 'openDua()' : "go('" + t.s + "')"}" aria-label="${t.label}">
+                                <div class="ng-bar"></div>
+                                <div class="ng-icon">${t.ico}</div>
+                                <div class="ng-label">${t.label}</div>
+                            </button>`
+                ).join('');
+
+                const sonCards = DATA.sons.map(s =>
+                    `
+                            <div class="son-card">
+                                <div class="son-hdr">${patSVG()}
+                                    <div class="son-av-ring">
+                                        ${imgTag(s.img, s.fb, s.name)}
+                                    </div>
+                                </div>
+                                <div class="son-gold-bar"></div>
+                                <div class="son-body">
+                                    <div class="son-roman">${s.roman}</div>
+                                    <h3>${s.name}</h3>
+                                    <p class="son-born">🕋 Born ${s.born}</p>
+                                    <div class="son-rule"></div>
+                                    <p>${s.desc}</p>
+                                </div>
+                            </div>`
+                ).join('');
+
+                return `
+                        <!-- HERO -->
+                        <div id="hero">
+                            ${pts}
+                            <svg class="h-wave" viewBox="0 0 1440 90" preserveAspectRatio="none">
+                                <path d="M0,90 Q360,5 720,48 Q1080,90 1440,18 L1440,90 Z" fill="#faf7f0"/>
+                            </svg>
+                            <div class="h-inner">
+                                <div class="portrait-wrap">
+                                    <div class="portrait-frame">
+                                        ${imgTag(IMG.main, FB.main, 'Syed Tahir Allauddin Al-Qadri Al-Gillani')}
+                                    </div>
+                                    <div class="portrait-anim"></div>
+                                    <div class="portrait-badge">☪ Qadiriyya Tariqa</div>
+                                </div>
+                                <div class="h-text">
+                                    <p class="h-eyebrow">Sufi Saint · Spiritual Guide · Reformer</p>
+                                    <h1 class="h-name">
+                                        Syed Tahir Allauddin<br/>
+                                        <span class="gld">Al-Qadri Al-Gillani</span>
+                                    </h1>
+                                    <p class="h-title">
+                                        Qudwat-ul-Awliya · Naqeeb-ul-Ashraaf<br/>
+                                        Head of the Qadiriyya Baghdadia Spiritual Tariqa
+                                    </p>
+                                    <div class="h-pills">
+                                        <div class="h-pill"><span>🕌</span><span>Born: 18 June 1932, Baghdad</span></div>
+                                        <div class="h-pill"><span>🕊️</span><span>Passed: 7 June 1991, Germany</span></div>
+                                        <div class="h-pill"><span>📍</span><span>Resting: Lahore, Pakistan</span></div>
+                                    </div>
+                                    <div class="h-btns">
+                                        <button class="btn-gold" onclick="go('biography')">Read Full Biography →</button>
+                                        <button class="btn-outline" onclick="go('teachings')">His Teachings</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="wrap">
+                            ${sh('Explore His Legacy','Navigate')}
+                            <div class="ng">${tiles}</div>
+                        </div>
+
+                        <div class="about-strip">
+                            <div class="about-inner">
+                                ${sh('Life & Spiritual Legacy','About')}
+                                <p class="main-p">A 20th-century Iraqi Sufi Saint who was the head of the Qadiriyya Baghdadia Spiritual Tariqa. He was the custodian of the Shrine of Abdul Qadir al-Gilani and is widely accepted as a reformer of Sufism in the modern era.</p>
+                                ${divGold()}
+                                <p class="sub-p">Descendant of Ghous ul Azam Sheikh Abdul-Qadir Gilani and the Holy Prophet Muhammad ﷺ</p>
+                            </div>
+                        </div>
+
+                        <div class="wrap">
+                            ${sh('His Blessed Sons','Lineage & Continuation')}
+                            <div class="sons-grid">${sonCards}</div>
+                        </div>
+
+                        <div class="books-strip">
+                            <div class="books-strip-inner">
+                                ${sh('Written Works','Publications',true)}
+                                <div class="book-tags">
+                                    ${DATA.books.map(b => `<span class="book-tag">📖 ${b}</span>`).join('')}
+                                </div>
+                            </div>
+                        </div>`;
+            },
+
+            biography() {
+                return `
+                        <div class="wrap-sm">
+                            ${sh('Biography','Life Story')}
+                            <div class="bio-box">
+                                <div class="bio-hdr">
+                                    <div class="bio-pat">${patSVG()}</div>
+                                    <div class="bio-av">
+                                        ${imgTag(IMG.main, FB.main, 'Syed Tahir Allauddin')}
+                                    </div>
+                                    <h2>Syed Tahir Allauddin Al-Qadri Al-Gillani</h2>
+                                    <p>Qudwat-ul-Awliya · Naqeeb-ul-Ashraaf</p>
+                                </div>
+                                <div class="bio-body">
+                                    <div class="bio-facts">
+                                        <div>
+                                            <div class="fact-lbl">Born</div>
+                                            <div class="fact-val">🕌 18 June 1932, Baghdad, Iraq</div>
+                                        </div>
+                                        <div>
+                                            <div class="fact-lbl">Passed Away</div>
+                                            <div class="fact-val">🕊️ 7 June 1991, Germany</div>
+                                        </div>
+                                        <div>
+                                            <div class="fact-lbl">Resting Place</div>
+                                            <div class="fact-val">📍 Lahore, Pakistan</div>
+                                        </div>
+                                        <div>
+                                            <div class="fact-lbl">Lineage</div>
+                                            <div class="fact-val">🌿 Descendant of Ghous ul Azam & Prophet Muhammad ﷺ</div>
+                                        </div>
+                                    </div>
+                                    ${divGold()}
+                                    <div class="bio-sec-lbl">About</div>
+                                    <p class="bio-sec-txt">A 20th-century Iraqi Sufi Saint who was the head of the Qadiriyya Baghdadia Spiritual Tariqa. He was the custodian of the Shrine of Abdul Qadir al-Gilani and has been accepted by many as a reformer of Sufism.</p>
+                                    ${divGold()}
+                                    <div class="bio-sec-lbl">Migration to Pakistan</div>
+                                    <p class="bio-sec-txt">In 1956, Al-Gillani left Baghdad and migrated to Pakistan, where he settled permanently in Quetta. President General Ayub Khan pledged Bay'ah in the Qadiriyya Tariqa at his hands.</p>
+                                    ${divGold()}
+                                    <div class="bio-sec-lbl">Legacy</div>
+                                    <p class="bio-sec-txt">He had three sons: Syed Mahmood Mohiyuddin, Syed Abdul Qadir Jamaluddin, and Syed Muhammad Ziauddin, who continue to propagate the teachings of Silsilah e Qadiriyya across the world.</p>
+                                </div>
+                            </div>
+                        </div>`;
+            },
+
+            sons() {
+                const html = DATA.sons.map(s =>
+                    `
+                            <div class="son-card">
+                                <div class="son-hdr">${patSVG()}
+                                    <div class="son-av-ring">
+                                        ${imgTag(s.img, s.fb, s.name)}
+                                    </div>
+                                </div>
+                                <div class="son-gold-bar"></div>
+                                <div class="son-body">
+                                    <div class="son-roman">${s.roman}</div>
+                                    <h3>${s.name}</h3>
+                                    <p class="son-born">🕋 Born ${s.born}</p>
+                                    <div class="son-rule"></div>
+                                    <p>${s.desc}</p>
+                                </div>
+                            </div>`
+                ).join('');
+                return `
+                        <div class="wrap">
+                            ${sh('His Blessed Sons','Lineage & Continuation')}
+                            <div class="sons-grid">${html}</div>
+                        </div>`;
+            },
+
+            teachings() {
+                const html = DATA.teachings.map(t =>
+                    `
+                            <div class="t-card">
+                                <div class="t-accent"></div>
+                                <div class="t-inner">
+                                    <div class="t-icon">${t.icon}</div>
+                                    <div class="t-body">
+                                        <h3>${t.title}</h3>
+                                        <blockquote>"${t.q}"</blockquote>
+                                    </div>
+                                </div>
+                            </div>`
+                ).join('');
+                return `
+                        <div class="wrap-sm">
+                            ${sh('Core Teachings','Spiritual Wisdom')}
+                            <div class="t-list">${html}</div>
+                        </div>`;
+            },
+
+            books() {
+                const html = DATA.books.map((b, i) =>
+                    `
+                            <div class="b-card ${i % 2 === 0 ? 'grn' : 'gld'}">
+                                <div class="b-ico ${i % 2 === 0 ? 'grn' : 'gld'}">📖</div>
+                                <div>
+                                    <div class="b-vol">Vol. ${i + 1}</div>
+                                    <div class="b-title">${b}</div>
+                                </div>
+                            </div>`
+                ).join('');
+                return `
+                        <div class="wrap-sm">
+                            ${sh('Written Works','Publications')}
+                            <div class="books-grid">${html}</div>
+                        </div>`;
+            },
+
+            events() {
+                const html = DATA.events.map((ev, i) =>
+                    `
+                            <div class="tl-item">
+                                <div class="tl-dot ${i % 2 === 0 ? 'gd' : 'gn'}"></div>
+                                <div class="tl-card">
+                                    <div class="tl-top">
+                                        <h3>${ev.title}</h3>
+                                        <span class="tl-yr">${ev.yr}</span>
+                                    </div>
+                                    <div class="tl-loc">📍 ${ev.loc}</div>
+                                </div>
+                            </div>`
+                ).join('');
+                return `
+                        <div class="wrap-sm">
+                            ${sh('Notable Events','Milestones')}
+                            <div class="timeline">${html}</div>
+                        </div>`;
+            },
+        };
+
+        /* ── Navigation logic ───────────────────────────────────────── */
+        let cur = 'home';
+
+        function go(page) {
+            if (!PAGES[page]) page = 'home';
+            const el = document.getElementById('content');
+            el.classList.add('fade');
+            setTimeout(() => {
+                cur = page;
+                el.innerHTML = PAGES[page]();
+                el.classList.remove('fade');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                document.querySelectorAll('.nav-links button, #mob-menu button').forEach(btn => {
+                    const oc = btn.getAttribute('onclick') || '';
+                    btn.classList.toggle('active', oc.includes("'" + page + "'"));
+                });
+
+                document.getElementById('mob-menu').style.display = 'none';
+                document.getElementById('hbg').textContent = '☰';
+            }, 180);
+        }
+
+        function openDua() {
+            document.getElementById('dua-bg').classList.add('show');
+        }
+
+        function closeDua() {
+            document.getElementById('dua-bg').classList.remove('show');
+        }
+
+        function toggleMenu() {
+            const m = document.getElementById('mob-menu');
+            const h = document.getElementById('hbg');
+            const open = m.style.display === 'flex';
+            m.style.display = open ? 'none' : 'flex';
+            h.textContent = open ? '☰' : '✕';
+        }
+
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        /* init */
+        go('home');
+    </script>
+
+</body>
+</html>
